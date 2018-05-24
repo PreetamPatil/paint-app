@@ -1,0 +1,5 @@
+<resources>
+
+ <dimen name="default_brush_size">8dp</dimen>
+
+</resources>
