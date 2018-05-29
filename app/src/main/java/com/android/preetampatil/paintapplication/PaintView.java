@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -103,5 +104,13 @@ public class PaintView extends View {
         //redraw
         invalidate();
         return true;
+    }
+
+    public void cleanCanvas(){
+
+        mCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+        invalidate();
+
+
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.android.preetampatil.paintapplication.MainActivity">
 
     <com.android.preetampatil.paintapplication.PaintView
@@ -12,4 +12,29 @@
         android:layout_height="match_parent"
        />
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.CardView
+            android:layout_alignParentBottom="true"
+            android:elevation="@dimen/card_elevation_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:id="@+id/optionsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/option_clear_canvas" />
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+</RelativeLayout>
