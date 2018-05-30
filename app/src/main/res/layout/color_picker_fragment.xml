@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginBottom="@dimen/standard_margin"
+        style="@style/TextStyle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_color_picker_title"/>
+
+
+    <GridView
+        android:id="@+id/colorGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="@color/defaultPaintColor"
+        android:numColumns="4">
+
+    </GridView>
+
+</LinearLayout>
