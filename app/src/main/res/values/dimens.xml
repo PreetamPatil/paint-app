@@ -1,5 +1,5 @@
 <resources>
 
- <dimen name="default_brush_size">8dp</dimen>
- <dimen name="card_elevation_size">25dp</dimen>
+ <dimen name="default_brush_size">6dp</dimen>
+ <dimen name="card_elevation_size">50dp</dimen>
 </resources>

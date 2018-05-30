@@ -7,6 +7,7 @@
     tools:context="com.android.preetampatil.paintapplication.MainActivity">
 
     <com.android.preetampatil.paintapplication.PaintView
+        android:background="@color/canvasColor"
         android:id="@+id/paintView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,18 +21,52 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
+                android:weightSum="3"
                 android:id="@+id/optionsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_weight="1"
+                android:id="@+id/clearCanvasLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
                 <TextView
+                    android:gravity="center_horizontal"
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/option_clear_canvas" />
+            </LinearLayout>
 
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:id="@+id/eraseDrawingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/option_erase_drawing" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/option_change_brush_color" />
+                </LinearLayout>
 
             </LinearLayout>
 

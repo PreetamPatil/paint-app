@@ -33,6 +33,7 @@ public class PaintView extends View {
     //Define default brush size
     private float defaultBrushSize;
 
+
     public PaintView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
@@ -63,9 +64,9 @@ public class PaintView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        canvas.drawBitmap(mBitmap, 0 , 0, mCanvasColor);
+        canvas.drawBitmap(mBitmap, 0, 0, mCanvasColor);
         canvas.drawPath(mPath, mPaint);
+
 
     }
 
@@ -106,11 +107,20 @@ public class PaintView extends View {
         return true;
     }
 
+    //Method to clear the canvas.
     public void cleanCanvas(){
-
         mCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
         invalidate();
+    }
 
+    //Method to set the brush color.
+    public void setBrushColor (int updatedBrushColor){
+        mPaint.setColor(updatedBrushColor);
+    }
+
+    // Method to erase the drawing
+    public void eraseDrawing(){
+        mPaint.setColor(ContextCompat.getColor(mContext,R.color.eraseDrawingColor));
 
     }
 }

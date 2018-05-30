@@ -11,8 +11,6 @@ import android.widget.LinearLayout;
 public class MainActivity extends AppCompatActivity {
 
 
-
-    private LinearLayout mCanvasMenuOption;
     private PaintView mPaintView;
 
 
@@ -22,14 +20,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        mCanvasMenuOption = (LinearLayout) findViewById(R.id.optionsLayout);
+        LinearLayout mClearCanvasLayout = (LinearLayout) findViewById(R.id.clearCanvasLayout);
         mPaintView = (PaintView) findViewById(R.id.paintView);
+        LinearLayout mEraseDrawing = (LinearLayout) findViewById(R.id.eraseDrawingLayout);
 
-
-        mCanvasMenuOption.setOnClickListener(new View.OnClickListener() {
+        mClearCanvasLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showClearCanvasAlertDialog();
+            }
+        });
+
+        mEraseDrawing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPaintView.eraseDrawing();
             }
         });
 
@@ -37,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //Method to clear the canvas.
     void showClearCanvasAlertDialog(){
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setCancelable(true);
         alertDialogBuilder.setMessage(getString(R.string.clear_canvas_message));
-
 
         alertDialogBuilder.setPositiveButton(getString(R.string.button_positive_message), new DialogInterface.OnClickListener() {
             @Override
@@ -57,9 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         alertDialogBuilder.show();
-
 
     }
 

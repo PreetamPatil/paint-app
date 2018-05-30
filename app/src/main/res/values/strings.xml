@@ -3,8 +3,9 @@
     <string name="clear_canvas_message">Are you sure you want to clear the canvas</string>
     <string name="button_positive_message">Yes</string>
     <string name="button_negative_message">No</string>
-
     <string name="option_clear_canvas">Clear Canvas</string>
     <string name="option_change_brush_color">Change Color</string>
+    <string name="option_erase_drawing">Erase</string>
+
 
 </resources>
