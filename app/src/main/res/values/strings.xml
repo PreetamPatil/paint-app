@@ -6,6 +6,6 @@
     <string name="option_clear_canvas">Clear Canvas</string>
     <string name="option_change_brush_color">Change Color</string>
     <string name="option_erase_drawing">Erase</string>
-
+    <string name="dialog_color_picker_title">Please select a color</string>
 
 </resources>

@@ -1,6 +1,8 @@
 package com.android.preetampatil.paintapplication;
 
+import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+
 public class MainActivity extends AppCompatActivity {
 
 
     private PaintView mPaintView;
-
+    FragmentManager mFragmentManager;
+    ColorPickerFragment mColorPickerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         LinearLayout mClearCanvasLayout = (LinearLayout) findViewById(R.id.clearCanvasLayout);
-        mPaintView = (PaintView) findViewById(R.id.paintView);
         LinearLayout mEraseDrawing = (LinearLayout) findViewById(R.id.eraseDrawingLayout);
+        LinearLayout mChangeColor = (LinearLayout) findViewById(R.id.changeColor);
+        mFragmentManager = getFragmentManager();
+        mColorPickerFragment = new ColorPickerFragment();
+
+        mPaintView = (PaintView) findViewById(R.id.paintView);
+
 
         mClearCanvasLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPaintView.eraseDrawing();
+            }
+        });
+
+        mChangeColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mColorPickerFragment.show(mFragmentManager,"colorPicker");
             }
         });
 
@@ -63,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         alertDialogBuilder.show();
+
+    }
+
+    // Method to pass the selected color to the paint class.
+    public void selectedColor(String selectedColor){
+        mColorPickerFragment.dismiss();
+        mPaintView.setBrushColor(Color.parseColor(selectedColor));
 
     }
 
