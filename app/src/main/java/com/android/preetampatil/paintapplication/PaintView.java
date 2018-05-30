@@ -33,6 +33,8 @@ public class PaintView extends View {
     //Define default brush size
     private float defaultBrushSize;
 
+    //Define eraser size
+    private float defaultEraserSize;
 
     public PaintView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -46,6 +48,7 @@ public class PaintView extends View {
 
         mDefaultPaintColor = ContextCompat.getColor(mContext,R.color.defaultPaintColor);
         defaultBrushSize = mContext.getResources().getDimension(R.dimen.default_brush_size);
+        defaultEraserSize = mContext.getResources().getDimension(R.dimen.default_eraser_size);
 
         mPath = new Path();
         mPaint = new Paint();
@@ -115,11 +118,13 @@ public class PaintView extends View {
 
     //Method to set the brush color.
     public void setBrushColor (int updatedBrushColor){
+        mPaint.setStrokeWidth(defaultBrushSize);
         mPaint.setColor(updatedBrushColor);
     }
 
     // Method to erase the drawing
     public void eraseDrawing(){
+        mPaint.setStrokeWidth(defaultEraserSize);
         mPaint.setColor(ContextCompat.getColor(mContext,R.color.eraseDrawingColor));
 
     }

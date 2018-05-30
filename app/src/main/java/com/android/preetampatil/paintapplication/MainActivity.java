@@ -3,6 +3,7 @@ package com.android.preetampatil.paintapplication;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
     private PaintView mPaintView;
     FragmentManager mFragmentManager;
     ColorPickerFragment mColorPickerFragment;
+    LinearLayout mClearCanvasLayout;
+    LinearLayout mChangeColor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        LinearLayout mClearCanvasLayout = (LinearLayout) findViewById(R.id.clearCanvasLayout);
+        mClearCanvasLayout = (LinearLayout) findViewById(R.id.clearCanvasLayout);
         LinearLayout mEraseDrawing = (LinearLayout) findViewById(R.id.eraseDrawingLayout);
-        LinearLayout mChangeColor = (LinearLayout) findViewById(R.id.changeColor);
+        mChangeColor = (LinearLayout) findViewById(R.id.changeColor);
+
         mFragmentManager = getFragmentManager();
         mColorPickerFragment = new ColorPickerFragment();
-
         mPaintView = (PaintView) findViewById(R.id.paintView);
 
 
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showClearCanvasAlertDialog();
+                mClearCanvasLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
             }
         });
 
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         mChangeColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mChangeColor.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary));
                 mColorPickerFragment.show(mFragmentManager,"colorPicker");
             }
         });
@@ -69,12 +75,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 mPaintView.cleanCanvas();
+                mClearCanvasLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGrey));
             }
         });
 
         alertDialogBuilder.setNegativeButton(getString(R.string.button_negative_message), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                mClearCanvasLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGrey));
             }
         });
 
@@ -85,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     // Method to pass the selected color to the paint class.
     public void selectedColor(String selectedColor){
         mColorPickerFragment.dismiss();
+        mChangeColor.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGrey));
         mPaintView.setBrushColor(Color.parseColor(selectedColor));
 
     }
