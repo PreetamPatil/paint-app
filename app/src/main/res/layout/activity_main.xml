@@ -57,6 +57,19 @@
                         android:src="@drawable/ic_crop_portrait_black_24dp"/>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:id="@+id/redrawDrawing"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="50dp">
+                    <ImageView
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_brush_black_24dp"/>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/changeColor"

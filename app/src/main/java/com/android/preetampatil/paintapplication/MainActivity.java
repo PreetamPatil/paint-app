@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     ColorPickerFragment mColorPickerFragment;
     LinearLayout mClearCanvasLayout;
     LinearLayout mChangeColor;
+    LinearLayout mRedrawLayout;
+    LinearLayout mEraseDrawing;
 
 
     @Override
@@ -29,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         mClearCanvasLayout = (LinearLayout) findViewById(R.id.clearCanvasLayout);
-        LinearLayout mEraseDrawing = (LinearLayout) findViewById(R.id.eraseDrawingLayout);
+        mEraseDrawing = (LinearLayout) findViewById(R.id.eraseDrawingLayout);
         mChangeColor = (LinearLayout) findViewById(R.id.changeColor);
+        mRedrawLayout = (LinearLayout) findViewById(R.id.redrawDrawing);
 
         mFragmentManager = getFragmentManager();
         mColorPickerFragment = new ColorPickerFragment();
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         mEraseDrawing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPaintView.eraseDrawing();
+                eraseDrawing();
             }
         });
 
@@ -60,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mRedrawLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redrawDrawing();
+            }
+        });
 
     }
 
@@ -96,6 +105,22 @@ public class MainActivity extends AppCompatActivity {
         mChangeColor.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGrey));
         mPaintView.setBrushColor(Color.parseColor(selectedColor));
 
+    }
+
+    //Method to erase the drawing
+    public void eraseDrawing(){
+        mPaintView.eraseDrawing();
+        mEraseDrawing.setVisibility(View.GONE);
+        mRedrawLayout.setVisibility(View.VISIBLE);
+
+    }
+
+    //Method to resume the drawing on canvas.
+    public void redrawDrawing(){
+
+        mPaintView.redrawOnCanvas();
+        mEraseDrawing.setVisibility(View.VISIBLE);
+        mRedrawLayout.setVisibility(View.GONE);
     }
 
 }

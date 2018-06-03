@@ -119,13 +119,21 @@ public class PaintView extends View {
     //Method to set the brush color.
     public void setBrushColor (int updatedBrushColor){
         mPaint.setStrokeWidth(defaultBrushSize);
-        mPaint.setColor(updatedBrushColor);
+        mDefaultPaintColor = updatedBrushColor;
+        mPaint.setColor(mDefaultPaintColor);
     }
 
     // Method to erase the drawing
     public void eraseDrawing(){
         mPaint.setStrokeWidth(defaultEraserSize);
         mPaint.setColor(ContextCompat.getColor(mContext,R.color.eraseDrawingColor));
+
+    }
+
+    public void redrawOnCanvas(){
+
+        mPaint.setColor(mDefaultPaintColor);
+        mPaint.setStrokeWidth(defaultBrushSize);
 
     }
 }
